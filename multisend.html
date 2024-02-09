@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Donofy/Multisend</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous">
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet">
+        <link href="mstyle.css" rel="stylesheet">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@metamask/detect-provider@1.2.0/dist/index.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+        <link rel="stylesheet"
+            href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    </head>
+    <body class="scroll-smooth">
+        <div class="main">
+            <div class="home_page">
+                <nav class="navbar">
+                    <img src="donofy logo.png" class="logo">
+                    <div class="nav_right_items">
+                        <a href="register.html" class="btn1">Register your
+                            NGO</a>
+                        <a href="about-us.html" class="btn2">About us</a>
+                        <a href="index.html"
+                            class="btn3">Home</a>
+                        <button id="connect-wallet">Connect Wallet</button>
+                    </div>
+                </nav>
+                <h1 class="donofy_heading">Multisend</h1>
+                <!-- <h3 class="platform">Donation platform for NGO's</h3> -->
+            </div>
+            <div class="multisend_main">
+                <div class="send_box">
+                    <img src="ethcoin.png" class="eth_img">
+                    <section class="data-area ">
+                        <div
+                            class="data-container mx-auto p-8 max-w-5xl bg-opacity-10 backdrop-blur-md border-none border-gray-700 rounded-md">
+                            <div>
+                            </div>
+                            <div id="userAcc"></div>
+                            <div class="form-table-container">
+                                <form id="add-form"
+                                    class="grid grid-cols-8 gap-4 mb-6">
+                                    <div class="form-group col-span-5">
+                                        <label for="address"
+                                            class="block text-lg tracking-wider">Address</label>
+                                        <input type="text"
+                                            class=""
+                                            id="address"
+                                            placeholder="Recipient address">
+                                    </div>
+                                    <div class="form-group col-span-2">
+                                        <label for="amount"
+                                            class="block text-lg tracking-wider labelamount">Amount</label>
+                                        <input type="number"
+                                            min="0.000000000000000001"
+                                            step="any"
+                                            class=""
+                                            id="amount" placeholder="0.0">
+                                    </div>
+                                    <button type="submit"
+                                        id="addbtn" class="">Add</button>
+                                    <div class="animate-pulse"><span
+                                            class="error-message-ad"></span></div>
+                                    <div class="animate-pulse"><span
+                                            class="error-message-am"></span></div>
+                                </form>
+                                <div class="csv pb-8">Or Import a csv file
+                                    <input type="file" id="import-csv"
+                                        accept=".csv" class="csv-btn"></div>
+                                <div class="invert-color">
+                                    <table
+                                        class="table w-full mb-6 scroll-smooth">
+                                        <thead
+                                            class="bg-gray-1000 border-none ">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="px-2 py-2 w-96 ">Address</th>
+                                                <th scope="col"
+                                                    class="px-2 py-2 am-pad">Amount</th>
+                                                <th scope="col"
+                                                    class="px-2 py-2"> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-body"
+                                            class="bg-black[0.5]">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="flex items-center my-2 pl-2  ">
+                                    <input id="link-checkbox" type="checkbox"
+                                        value
+                                        class="w-4 h-4 text-white bg-gray-100 border-gray-300 rounded focus:ring-0 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="link-checkbox"
+                                        class="ml-2 text-sm font-normal text-white dark:text-gray-300">I
+                                        confirm that the addresses and amounts
+                                        are accurate.</label>
+                                </div>
+                                <div class="flex pt-3">
+                                    <button type="submit" id="sendButton"
+                                        class="">Send</button>
+                                    <span id="counter">0 ETH to 0
+                                        Addresses</span>
+                                </div>
+                            </div>
+                            <div id="transaction-hash" class="mt-4"></div>
+                            <div id="transactionAlert" title="none"
+                                style="display:none;">
+                                <p class="hash">Transaction submitted and
+                                    confirmed. Check the transaction <a
+                                        id="transactionLink" href
+                                        target="_blank">here</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <script src="mscript.js"></script>
+        </body>
+    </html>

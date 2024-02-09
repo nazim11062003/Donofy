@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Donatic</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="style.css" rel="stylesheet">
+        <script
+            src="https://cdn.jsdelivr.net/npm/@metamask/detect-provider@1.2.0/dist/index.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+        <link rel="stylesheet"
+            href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <body>
+        <div class="main">
+            <div class="home_page">
+                <nav class="navbar">
+                    <img src="donofy logo.png" class="logo">
+                    <div class="nav_right_items">
+                        <a href="register.html" class="btn1">Register your
+                            NGO</a>
+                        <a href="about-us.html" class="btn2">About us</a>
+                        <a href="multisend.html"
+                            class="btn3">Multisend</a>
+                        <button id="connect-wallet">Connect Wallet</button>
+                    </div>
+                </nav>
+                <h1 class="donofy_heading">Donatic</h1>
+                <h3 class="platform">Donation platform for NGO's</h3>
+            </div>
+            <section class="donation_section">
+                    <div class="donate_box">
+                        <div id="userAcc"></div>
+                    <div
+                        class="donate_head">Donate</div>
+                    <img src="Line.png" class="line">
+
+                    <div id="add-form">
+
+                        <select id="sector" class="cat"
+                            required>
+                            <option value disabled
+                                selected>Category</option>
+                            <option value="health">Health
+                                Sector</option>
+                            <option value="education">EducationS
+                                Sector</option>
+                            <option value="environment">Environment
+                                Sector</option>
+                        </select>
+                        <label for="amount"  class="amount_head">Amount</label>
+                        <input type="number" min="0.000000000000000001"
+                            step="any"
+                            id="amount" placeholder="0.0">
+                            <button type="submit" id="sendButton" onclick="interactContract()">Send</button>
+                    </div>
+                    </div>
+                </section>
+                <script src="script.js"></script>
+            </body>
+        </html>
